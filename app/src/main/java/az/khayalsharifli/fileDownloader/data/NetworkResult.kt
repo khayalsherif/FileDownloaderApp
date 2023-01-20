@@ -1,4 +1,4 @@
-package az.khayalsharifli.dowlandfile.data
+package az.khayalsharifli.fileDownloader.data
 
 sealed class NetworkResult<T>(
     val data: T? = null,

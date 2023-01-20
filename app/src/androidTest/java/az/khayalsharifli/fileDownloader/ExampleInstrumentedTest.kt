@@ -1,4 +1,4 @@
-package az.khayalsharifli.dowlandfile
+package az.khayalsharifli.fileDownloader
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

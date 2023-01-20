@@ -1,7 +1,7 @@
-package az.khayalsharifli.dowlandfile
+package az.khayalsharifli.fileDownloader
 
 import android.app.Application
-import az.khayalsharifli.dowlandfile.di.module
+import az.khayalsharifli.fileDownloader.di.module
 import org.koin.core.context.startKoin
 
 class App : Application() {

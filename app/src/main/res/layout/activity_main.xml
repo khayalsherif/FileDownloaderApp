@@ -15,8 +15,8 @@
         android:layout_marginHorizontal="16dp"
         android:ems="10"
         android:hint="File Url"
-        android:text="https://research.nhm.org/pdfs/10840/10840.pdf"
         android:inputType="textPersonName"
+        android:text="https://research.nhm.org/pdfs/10840/10840.pdf"
         tools:ignore="TextFields" />
 
 
@@ -47,6 +47,7 @@
             android:id="@+id/buttonCancel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:enabled="false"
             android:layout_marginStart="16dp"
             android:text="Cancel" />
     </LinearLayout>

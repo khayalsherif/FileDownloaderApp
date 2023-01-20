@@ -1,8 +1,9 @@
-package az.khayalsharifli.dowlandfile.di
+package az.khayalsharifli.fileDownloader.di
 
-import az.khayalsharifli.dowlandfile.content.MainViewModel
-import az.khayalsharifli.dowlandfile.data.NetworkRepository
-import az.khayalsharifli.dowlandfile.data.NetworkService
+import az.khayalsharifli.fileDownloader.BuildConfig
+import az.khayalsharifli.fileDownloader.content.MainViewModel
+import az.khayalsharifli.fileDownloader.data.NetworkRepository
+import az.khayalsharifli.fileDownloader.data.NetworkService
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -14,14 +15,16 @@ val module = module {
 
     single {
         val client = OkHttpClient.Builder()
-            .readTimeout(30, TimeUnit.SECONDS)
-            .writeTimeout(30, TimeUnit.SECONDS)
-            .callTimeout(30, TimeUnit.SECONDS)
+            .readTimeout(60, TimeUnit.SECONDS)
+            .writeTimeout(60, TimeUnit.SECONDS)
+            .callTimeout(60, TimeUnit.SECONDS)
 
-        val logger =
-            HttpLoggingInterceptor().setLevel(level = HttpLoggingInterceptor.Level.BODY)
-        client.addInterceptor(logger)
+        if (BuildConfig.DEBUG) {
+            val logger =
+                HttpLoggingInterceptor().setLevel(level = HttpLoggingInterceptor.Level.BODY)
+            client.addInterceptor(logger)
 
+        }
         client.build()
     }
 

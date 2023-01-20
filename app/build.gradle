@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace 'az.khayalsharifli.dowlandfile'
+    namespace 'az.khayalsharifli.fileDownloader'
     compileSdk 33
 
     defaultConfig {

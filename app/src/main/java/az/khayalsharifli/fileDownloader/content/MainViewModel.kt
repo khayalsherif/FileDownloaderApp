@@ -1,10 +1,9 @@
-package az.khayalsharifli.dowlandfile.content
+package az.khayalsharifli.fileDownloader.content
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import az.khayalsharifli.dowlandfile.data.NetworkRepository
-import az.khayalsharifli.dowlandfile.data.NetworkResult
-import kotlinx.coroutines.Job
+import az.khayalsharifli.fileDownloader.data.NetworkRepository
+import az.khayalsharifli.fileDownloader.data.NetworkResult
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
@@ -27,7 +26,7 @@ class MainViewModel(
             _fileResponse.emit(handleGetHistoryResponse(response))
         } catch (e: Exception) {
             e.printStackTrace()
-            _fileResponse.emit(NetworkResult.Error("Something went wrong."))
+            _fileResponse.emit(NetworkResult.Error("The job was cancelled."))
         }
     }
 
@@ -45,7 +44,14 @@ class MainViewModel(
                 )
             }
         }
+    }
 
+    fun saveFile(file: File, response: ResponseBody) {
+        response.byteStream().use { inputStream ->
+            file.outputStream().use { outputStream ->
+                inputStream.copyTo(outputStream)
+            }
+        }
     }
 }
 

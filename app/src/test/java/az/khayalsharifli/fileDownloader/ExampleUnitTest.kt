@@ -1,4 +1,4 @@
-package az.khayalsharifli.dowlandfile
+package az.khayalsharifli.fileDownloader
 
 import org.junit.Test
 

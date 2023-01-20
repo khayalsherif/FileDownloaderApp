@@ -1,4 +1,4 @@
-package az.khayalsharifli.dowlandfile.data
+package az.khayalsharifli.fileDownloader.data
 
 import okhttp3.ResponseBody
 import retrofit2.Response
