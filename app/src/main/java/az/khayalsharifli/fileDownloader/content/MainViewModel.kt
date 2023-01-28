@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import az.khayalsharifli.fileDownloader.data.NetworkRepository
 import az.khayalsharifli.fileDownloader.data.NetworkResult
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
@@ -19,7 +20,7 @@ class MainViewModel(
         MutableStateFlow<NetworkResult<ResponseBody>>(NetworkResult.Empty())
     val fileResponse: StateFlow<NetworkResult<ResponseBody>> get() = _fileResponse
 
-    fun downlandFile(fileUrl: String) = viewModelScope.launch {
+    fun downlandFile(fileUrl: String) = viewModelScope.launch(Dispatchers.IO) {
         _fileResponse.emit(NetworkResult.Loading())
         try {
             val response = repository.downlandFile(fileUrl)
